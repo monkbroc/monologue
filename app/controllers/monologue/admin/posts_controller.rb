@@ -8,6 +8,7 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
 
   def new
     @post = Monologue::Post.new
+    @post.user_id = monologue_current_user.id
   end
 
   ## Preview a post without saving.
@@ -22,7 +23,6 @@ class Monologue::Admin::PostsController < Monologue::Admin::BaseController
 
   def create
     @post = Monologue::Post.new post_params
-    @post.user_id = monologue_current_user.id
     if @post.save
       prepare_flash_and_redirect_to_edit()
     else
@@ -65,6 +65,6 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at)
+    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at, :user_id, :image_url)
   end
 end

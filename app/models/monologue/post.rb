@@ -11,6 +11,7 @@ class Monologue::Post < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :title, :content, :url, :published_at, presence: true
+  validates :image_url, presence: true
   validates :url, uniqueness: true
   validate :url_do_not_start_with_slash
 
