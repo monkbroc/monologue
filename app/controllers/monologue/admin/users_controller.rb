@@ -47,6 +47,6 @@ class Monologue::Admin::UsersController < Monologue::Admin::BaseController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :guest_author, :photo_url, :title)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :guest_author, :photo_url, :title, :profile_url)
     end
 end
